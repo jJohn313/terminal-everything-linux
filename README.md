@@ -12,6 +12,7 @@ A curated collection, umbrella meta-repository, and unified manager for terminal
 | :--- | :--- | :--- | :--- | :--- |
 | **Steam TUI** | 🎮 Gaming | `Stable` | [jJohn313/steam-tui](https://github.com/jJohn313/steam-tui) | Headless Steam launcher, library browser, and live HUD with **0 MB lightweight shim**, automatic anti-cheat classification, in-flight update tracking, and full bidirectional cloud save sharing. |
 | **YouTube in Terminal** | 📺 Media / Video | `WIP` | [jJohn313/youtube-tui](https://github.com/jJohn313/youtube-tui) | Terminal YouTube search and streaming client with inline Kitty/Chafa thumbnail art and deduplicated, hardware-accelerated MPV playback. |
+| **Webflow** | 🌐 Web / Browser | `WIP` | [jJohn313/webflow](https://github.com/jJohn313/webflow) | Non-Chromium, modular web architecture: terminal Markdown extractor (`wf-reader`) & chromeless WebKitGTK modal viewer (`wf-view`) with Vim bindings & `f`-hints. |
 
 ---
 

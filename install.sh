@@ -79,13 +79,29 @@ install_tools() {
         fi
     fi
 
+    # 3. Webflow (WIP)
+    if [[ -d "${REPO_DIR}/tools/webflow/bin" ]]; then
+        echo -e "  [webflow (WIP)]"
+        for wf_bin in wf-open wf-view wf-reader wf-bookmarks wf-pass; do
+            ln -sfn "${REPO_DIR}/tools/webflow/bin/${wf_bin}" "${BIN_DIR}/${wf_bin}"
+            echo -e "    ${GREEN}✔${RESET} ${wf_bin} -> ${REPO_DIR}/tools/webflow/bin/${wf_bin}"
+        done
+
+        # Seed initial rules config if not present
+        mkdir -p "${HOME}/.config/webflow"
+        if [[ ! -f "${HOME}/.config/webflow/rules.conf" && -f "${REPO_DIR}/tools/webflow/config/rules.conf" ]]; then
+            cp -p "${REPO_DIR}/tools/webflow/config/rules.conf" "${HOME}/.config/webflow/rules.conf"
+            echo -e "    ${GREEN}✔${RESET} ~/.config/webflow/rules.conf configured"
+        fi
+    fi
+
     echo -e "\n${GREEN}${BOLD}✔ Terminal Everything Linux successfully installed!${RESET}"
     echo -e "Ensure ${BOLD}${BIN_DIR}${RESET} is in your \$PATH."
 }
 
 uninstall_tools() {
     echo -e "${YELLOW}▶ Removing TEL tool symlinks from ${BIN_DIR}...${RESET}"
-    for tool in steam steam-tui-backend youtube mpv; do
+    for tool in steam steam-tui-backend youtube mpv wf-open wf-view wf-reader wf-bookmarks wf-pass; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             rm -f "${target}"
@@ -97,7 +113,7 @@ uninstall_tools() {
 
 check_status() {
     echo -e "${CYAN}${BOLD}Tool Installation Status:${RESET}"
-    for tool in steam steam-tui-backend youtube mpv; do
+    for tool in steam steam-tui-backend youtube mpv wf-open wf-view wf-reader wf-bookmarks wf-pass; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             dest=$(readlink -f "${target}")

@@ -4,3 +4,6 @@
 [submodule "tools/youtube-tui"]
 	path = tools/youtube-tui
 	url = https://github.com/jJohn313/youtube-tui.git
+[submodule "tools/webflow"]
+	path = tools/webflow
+	url = https://github.com/jJohn313/webflow.git
