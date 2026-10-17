@@ -8,11 +8,10 @@ A curated collection, umbrella meta-repository, and unified manager for terminal
 
 ## 📦 Included Tools
 
-| Tool | Category | Repository | Description |
-| :--- | :--- | :--- | :--- |
-| **Steam TUI** | 🎮 Gaming | [jJohn313/steam-tui](https://github.com/jJohn313/steam-tui) | Headless Steam launcher, library browser, and live HUD with **0 MB lightweight shim**, automatic anti-cheat classification, in-flight update tracking, and full bidirectional cloud save sharing. |
-| **Browser Audio** | 🔊 Audio / PipeWire | [jJohn313/browser-audio](https://github.com/jJohn313/browser-audio) | Dedicated virtual sink isolation, zero-latency headphone monitoring, and one-liner CLI recording for PipeWire. |
-| **Session Picker** | 💻 Workspaces | [jJohn313/antigravity-session-picker](https://github.com/jJohn313/antigravity-session-picker) | Fast terminal selector and launcher for developer workspaces and agentic coding sessions. |
+| Tool | Category | Status | Location / Submodule | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **Steam TUI** | 🎮 Gaming | `Stable` | [jJohn313/steam-tui](https://github.com/jJohn313/steam-tui) | Headless Steam launcher, library browser, and live HUD with **0 MB lightweight shim**, automatic anti-cheat classification, in-flight update tracking, and full bidirectional cloud save sharing. |
+| **YouTube in Terminal** | 📺 Media / Video | `WIP` | [`tools/youtube-tui`](file:///home/john/Repositories/terminal-everything-linux/tools/youtube-tui) | Terminal YouTube search and streaming client with inline Kitty/Chafa thumbnail art and deduplicated, hardware-accelerated MPV playback. |
 
 ---
 

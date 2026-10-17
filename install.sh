@@ -63,11 +63,20 @@ install_tools() {
         echo -e "    ${GREEN}✔${RESET} steam-tui-backend -> ${REPO_DIR}/tools/steam-tui/bin/steam-tui-backend"
     fi
 
-    # 2. Browser Audio
-    if [[ -d "${REPO_DIR}/tools/browser-audio/bin" ]]; then
-        echo -e "  [browser-audio]"
-        ln -sfn "${REPO_DIR}/tools/browser-audio/bin/browser-audio" "${BIN_DIR}/browser-audio"
-        echo -e "    ${GREEN}✔${RESET} browser-audio -> ${REPO_DIR}/tools/browser-audio/bin/browser-audio"
+    # 2. YouTube in Terminal (WIP)
+    if [[ -d "${REPO_DIR}/tools/youtube-tui/bin" ]]; then
+        echo -e "  [youtube-tui (WIP)]"
+        ln -sfn "${REPO_DIR}/tools/youtube-tui/bin/youtube" "${BIN_DIR}/youtube"
+        ln -sfn "${REPO_DIR}/tools/youtube-tui/bin/mpv" "${BIN_DIR}/mpv"
+        echo -e "    ${GREEN}✔${RESET} youtube -> ${REPO_DIR}/tools/youtube-tui/bin/youtube"
+        echo -e "    ${GREEN}✔${RESET} mpv -> ${REPO_DIR}/tools/youtube-tui/bin/mpv"
+
+        # Link config if not already present
+        mkdir -p "${HOME}/.config/ytfzf"
+        if [[ ! -f "${HOME}/.config/ytfzf/conf.sh" ]]; then
+            cp -p "${REPO_DIR}/tools/youtube-tui/config/ytfzf/conf.sh" "${HOME}/.config/ytfzf/conf.sh"
+            echo -e "    ${GREEN}✔${RESET} ~/.config/ytfzf/conf.sh configured"
+        fi
     fi
 
     echo -e "\n${GREEN}${BOLD}✔ Terminal Everything Linux successfully installed!${RESET}"
@@ -76,7 +85,7 @@ install_tools() {
 
 uninstall_tools() {
     echo -e "${YELLOW}▶ Removing TEL tool symlinks from ${BIN_DIR}...${RESET}"
-    for tool in steam steam-tui-backend browser-audio; do
+    for tool in steam steam-tui-backend youtube mpv; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             rm -f "${target}"
@@ -88,7 +97,7 @@ uninstall_tools() {
 
 check_status() {
     echo -e "${CYAN}${BOLD}Tool Installation Status:${RESET}"
-    for tool in steam steam-tui-backend browser-audio; do
+    for tool in steam steam-tui-backend youtube mpv; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             dest=$(readlink -f "${target}")
