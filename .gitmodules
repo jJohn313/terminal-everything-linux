@@ -1,0 +1,9 @@
+[submodule "tools/steam-tui"]
+	path = tools/steam-tui
+	url = https://github.com/jJohn313/steam-tui.git
+[submodule "tools/browser-audio"]
+	path = tools/browser-audio
+	url = https://github.com/jJohn313/browser-audio.git
+[submodule "tools/antigravity-session-picker"]
+	path = tools/antigravity-session-picker
+	url = https://github.com/jJohn313/antigravity-session-picker.git
