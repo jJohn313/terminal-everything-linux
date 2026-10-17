@@ -82,7 +82,7 @@ install_tools() {
     # 3. Webflow (WIP)
     if [[ -d "${REPO_DIR}/tools/webflow/bin" ]]; then
         echo -e "  [webflow (WIP)]"
-        for wf_bin in wf-open wf-view wf-reader wf-bookmarks wf-pass; do
+        for wf_bin in webflow wf-open wf-view wf-reader wf-bookmarks wf-pass wf-workbench; do
             ln -sfn "${REPO_DIR}/tools/webflow/bin/${wf_bin}" "${BIN_DIR}/${wf_bin}"
             echo -e "    ${GREEN}✔${RESET} ${wf_bin} -> ${REPO_DIR}/tools/webflow/bin/${wf_bin}"
         done
@@ -101,7 +101,7 @@ install_tools() {
 
 uninstall_tools() {
     echo -e "${YELLOW}▶ Removing TEL tool symlinks from ${BIN_DIR}...${RESET}"
-    for tool in steam steam-tui-backend youtube mpv wf-open wf-view wf-reader wf-bookmarks wf-pass; do
+    for tool in steam steam-tui-backend youtube mpv webflow wf-open wf-view wf-reader wf-bookmarks wf-pass wf-workbench; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             rm -f "${target}"
@@ -113,7 +113,7 @@ uninstall_tools() {
 
 check_status() {
     echo -e "${CYAN}${BOLD}Tool Installation Status:${RESET}"
-    for tool in steam steam-tui-backend youtube mpv wf-open wf-view wf-reader wf-bookmarks wf-pass; do
+    for tool in steam steam-tui-backend youtube mpv webflow wf-open wf-view wf-reader wf-bookmarks wf-pass wf-workbench; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             dest=$(readlink -f "${target}")
