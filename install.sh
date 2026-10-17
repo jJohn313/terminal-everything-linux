@@ -79,19 +79,23 @@ install_tools() {
         fi
     fi
 
-    # 3. Webflow (WIP)
+    # 3. Webflow (Early Build)
     if [[ -d "${REPO_DIR}/tools/webflow/bin" ]]; then
-        echo -e "  [webflow (WIP)]"
-        for wf_bin in webflow wf-open wf-view wf-reader wf-bookmarks wf-pass wf-workbench; do
+        echo -e "  [webflow (Early Build)]"
+        for wf_bin in webflow wf-open wf-tier wf-reader wf-media wf-view wf-workbench wf-pass wf-bookmarks; do
             ln -sfn "${REPO_DIR}/tools/webflow/bin/${wf_bin}" "${BIN_DIR}/${wf_bin}"
             echo -e "    ${GREEN}✔${RESET} ${wf_bin} -> ${REPO_DIR}/tools/webflow/bin/${wf_bin}"
         done
 
-        # Seed initial rules config if not present
+        # Seed initial rules & theme configs if not present
         mkdir -p "${HOME}/.config/webflow"
         if [[ ! -f "${HOME}/.config/webflow/rules.conf" && -f "${REPO_DIR}/tools/webflow/config/rules.conf" ]]; then
             cp -p "${REPO_DIR}/tools/webflow/config/rules.conf" "${HOME}/.config/webflow/rules.conf"
             echo -e "    ${GREEN}✔${RESET} ~/.config/webflow/rules.conf configured"
+        fi
+        if [[ ! -f "${HOME}/.config/webflow/theme.conf" && -f "${REPO_DIR}/tools/webflow/config/theme.conf" ]]; then
+            cp -p "${REPO_DIR}/tools/webflow/config/theme.conf" "${HOME}/.config/webflow/theme.conf"
+            echo -e "    ${GREEN}✔${RESET} ~/.config/webflow/theme.conf configured"
         fi
     fi
 
@@ -101,7 +105,7 @@ install_tools() {
 
 uninstall_tools() {
     echo -e "${YELLOW}▶ Removing TEL tool symlinks from ${BIN_DIR}...${RESET}"
-    for tool in steam steam-tui-backend youtube mpv webflow wf-open wf-view wf-reader wf-bookmarks wf-pass wf-workbench; do
+    for tool in steam steam-tui-backend youtube mpv webflow wf-open wf-tier wf-reader wf-media wf-view wf-workbench wf-pass wf-bookmarks; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             rm -f "${target}"
