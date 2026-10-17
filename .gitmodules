@@ -1,3 +1,6 @@
 [submodule "tools/steam-tui"]
 	path = tools/steam-tui
 	url = https://github.com/jJohn313/steam-tui.git
+[submodule "tools/youtube-tui"]
+	path = tools/youtube-tui
+	url = https://github.com/jJohn313/youtube-tui.git
