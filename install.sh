@@ -99,13 +99,20 @@ install_tools() {
         fi
     fi
 
+    # 4. Yazi Dolphin Drop-In Suite
+    if [[ -d "${REPO_DIR}/tools/yazi-dolphin" ]]; then
+        echo -e "  [yazi-dolphin]"
+        ln -sfn "${REPO_DIR}/tools/yazi-dolphin/bin/yazi-dolphin" "${BIN_DIR}/yazi-dolphin"
+        echo -e "    ${GREEN}✔${RESET} yazi-dolphin -> ${REPO_DIR}/tools/yazi-dolphin/bin/yazi-dolphin"
+    fi
+
     echo -e "\n${GREEN}${BOLD}✔ Terminal Everything Linux successfully installed!${RESET}"
     echo -e "Ensure ${BOLD}${BIN_DIR}${RESET} is in your \$PATH."
 }
 
 uninstall_tools() {
     echo -e "${YELLOW}▶ Removing TEL tool symlinks from ${BIN_DIR}...${RESET}"
-    for tool in steam steam-tui-backend youtube mpv webflow wf-open wf-tier wf-reader wf-media wf-view wf-workbench wf-pass wf-bookmarks; do
+    for tool in steam steam-tui-backend youtube mpv webflow wf-open wf-tier wf-reader wf-media wf-view wf-workbench wf-pass wf-bookmarks yazi-dolphin; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             rm -f "${target}"
@@ -117,7 +124,7 @@ uninstall_tools() {
 
 check_status() {
     echo -e "${CYAN}${BOLD}Tool Installation Status:${RESET}"
-    for tool in steam steam-tui-backend youtube mpv webflow wf-open wf-view wf-reader wf-bookmarks wf-pass wf-workbench; do
+    for tool in steam steam-tui-backend youtube mpv webflow wf-open wf-view wf-reader wf-bookmarks wf-pass wf-workbench yazi-dolphin; do
         target="${BIN_DIR}/${tool}"
         if [[ -L "${target}" ]]; then
             dest=$(readlink -f "${target}")

@@ -7,3 +7,6 @@
 [submodule "tools/webflow"]
 	path = tools/webflow
 	url = https://github.com/jJohn313/webflow.git
+[submodule "tools/yazi-dolphin"]
+	path = tools/yazi-dolphin
+	url = https://github.com/jJohn313/yazi-dolphin.git
